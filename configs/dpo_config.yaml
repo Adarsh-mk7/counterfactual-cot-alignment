@@ -1,0 +1,41 @@
+# Direct Preference Optimization (DPO) Hyperparameters & LoRA Config
+model:
+  model_name_or_path: "meta-llama/Meta-Llama-3-8B-Instruct"
+  torch_dtype: "bfloat16"
+  device_map: "auto"
+
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules:
+    - "q_proj"
+    - "v_proj"
+    - "k_proj"
+    - "o_proj"
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+dpo:
+  beta: 0.1
+  loss_type: "sigmoid"
+  max_prompt_length: 512
+  max_length: 1024
+
+training:
+  output_dir: "./results_dpo"
+  save_model_dir: "./aligned_model_lora"
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 4
+  learning_rate: 5.0e-6
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.05
+  logging_steps: 10
+  max_steps: 100
+  bf16: true
+  fp16: false
+  save_strategy: "no"
+  report_to: "none"
+
+data:
+  train_data_path: "data/perturbed/gsm8k_sycophancy_dpo_pairs.json"

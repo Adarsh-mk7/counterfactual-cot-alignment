@@ -1,0 +1,27 @@
+name: counterfactual-cot
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pytorch>=2.2.0
+  - torchvision
+  - torchaudio
+  - pandas>=2.2.0
+  - pyyaml>=6.0
+  - tqdm>=4.66.0
+  - pytest>=8.0.0
+  - matplotlib>=3.8.0
+  - seaborn>=0.13.0
+  - scipy>=1.11.0
+  - jupyter
+  - pip:
+      - transformers>=4.40.0
+      - datasets>=2.18.0
+      - trl>=0.8.6
+      - peft>=0.10.0
+      - accelerate>=0.29.0
+      - vllm>=0.4.2; sys_platform != "win32"
