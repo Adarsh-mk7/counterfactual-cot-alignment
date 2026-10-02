@@ -1,0 +1,8 @@
+{
+  "model_name": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "total_evaluated": 10,
+  "clean_correct": 10,
+  "sycophantic_flips": 5,
+  "nominal_accuracy": 100.0,
+  "sycophancy_yield_rate": 50.0
+}
